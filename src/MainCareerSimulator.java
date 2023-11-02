@@ -26,6 +26,7 @@ public class MainCareerSimulator {
         String position = ChooseTraits.choosePosition();
 
         SoccerPlayerCareer newPlayer = new SoccerPlayerCareer(name, age, nationality, position, currentTeam);
+        System.out.print(newPlayer.activeCareer());
 
 
     }
