@@ -23,10 +23,10 @@ public class MainCareerSimulator {
         int age = 16;
 
         //Position
-        String position = ChooseTraits.choosePosition();
 
+        String position = ChooseTraits.choosePosition();
         SoccerPlayerCareer newPlayer = new SoccerPlayerCareer(name, age, nationality, position, currentTeam);
-        System.out.print(newPlayer.activeCareer());
+        System.out.print(newPlayer.simulateYear());
 
 
     }

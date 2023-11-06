@@ -13,6 +13,8 @@ private String playerName;
 private int age;
 private String nationality;
 private String position;
+
+
 private String currentTeam;
     public SoccerPlayerCareer(String playerName, int age, String nationality, String position, String currentTeam){
         this.playerName = playerName;
@@ -23,19 +25,28 @@ private String currentTeam;
     }
 
     public String activeCareer(){
-        boolean retired = false;
-        while (retired == false){
-            statsForSeason();
-            age++;
-            retired();
+        int totalGoals = 0;
+        int totalAssists = 0;
+        int totalGamesPlayed = 0;
+
+        while (age < 18){
+
         }
         return "career finished";
+
+    }
+    public String simulateYear(){
+        String stats = "";
+        stats = statsForSeason();
+        age++;
+        return stats + "\nAge: " + age;
     }
 
     public String changeTeam(){
         currentTeam = ChooseTraits.printTeamOptions();
         return currentTeam;
     }
+
 
     public String statsForSeason(){
         String stats = "";
@@ -65,15 +76,13 @@ private String currentTeam;
         return stats;
 
     }
-    public boolean retired(){
+    public boolean retire(){
         System.out.print("Do you wish to retire (y or n)");
         String retire = s.nextLine();
-        if (retire == "y"){
-            return false;
-        }
-        else {
+        if (retire == "n"){
             return true;
         }
+        return false;
     }
 
 
