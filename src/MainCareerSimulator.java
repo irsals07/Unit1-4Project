@@ -46,9 +46,6 @@ public class MainCareerSimulator {
         System.out.print(newPlayer.toString());
 
 
-
-
-
     }
 
 
