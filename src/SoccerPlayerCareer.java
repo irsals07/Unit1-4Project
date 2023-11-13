@@ -79,26 +79,54 @@ public class SoccerPlayerCareer {
             int games = (int) (Math.random() * 60) + 1;
             int goals = (int) (Math.random() * 60) + 1;
             int assists = (int) (Math.random() * 21);
-            stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists;
+            String awardWon = "No";
             totalGames = totalGames + games;
             totalGoals = totalGoals + goals;
             totalAssists = totalAssists + assists;
+            if (goals > ((int) (Math.random() * 40) + 20)){
+                awardWon = "Yes!!!!";
+                awards++;
+            }
+            else{
+                awardWon = "No";
+                awards--;
+            }
+            stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
         } else if (position == "Midfielder") {
             int games = (int) (Math.random() * 60) + 1;
             int goals = (int) (Math.random() * 20) + 1;
             int assists = (int) (Math.random() * 41);
-            stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists;
+            String awardWon = "No";
             totalGames = totalGames + games;
             totalGoals = totalGoals + goals;
             totalAssists = totalAssists + assists;
+            if (assists > (int) (Math.random() * 20) + 15){
+                awardWon = "Yes!!!!";
+                awards++;
+            }
+            else{
+                awardWon = "No";
+                awards--;
+            }
+            stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
         } else if (position == "Defender") {
             int games = (int) (Math.random() * 60) + 1;
             int goals = (int) (Math.random() * 10) + 1;
             int assists = (int) (Math.random() * 15);
-            stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists;
+            String awardWon = "No";
             totalGames = totalGames + games;
             totalGoals = totalGoals + goals;
             totalAssists = totalAssists + assists;
+            if (goals > (int) (Math.random() * 20) + 1){
+                awardWon = "Yes!!!!";
+                awards++;
+            }
+            else{
+                awardWon = "No";
+                awards--;
+            }
+            stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
+
         } else if (position == "Goalkeeper") {
             int games = (int) (Math.random() * 60) + 1;
             int cleanSheets = (int) (Math.random() * 51);
@@ -118,14 +146,15 @@ public class SoccerPlayerCareer {
                     "\nGames: " + totalGames +
                     "\nGoals: " + totalGoals +
                     "\nAssists: " + totalAssists +
-                    "\nGoal Ratio: " + goalRatio +
-                    "\nAssist Ratio: " + assistRatio;
+                    "\nGoal Ratio: " + formatter.format(goalRatio) +
+                    "\nAssist Ratio: " + formatter.format(assistRatio) +
+                    "\nAwards Won: " + awards;
         } else {
             double ratio = (double) totalCleanSheets / totalGames;
             return "Your final stats" +
                     "\nGames: " + totalGames +
                     "\nClean Sheets: " + totalCleanSheets +
-                    "\nClean Sheet Ratio: " + ratio;
+                    "\nClean Sheet Ratio: " + formatter.format(ratio);
         }
     }
 
