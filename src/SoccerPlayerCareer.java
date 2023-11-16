@@ -89,7 +89,7 @@ public class SoccerPlayerCareer {
             }
             else{
                 awardWon = "No";
-                awards--;
+
             }
             stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
         } else if (position == "Midfielder") {
@@ -106,7 +106,7 @@ public class SoccerPlayerCareer {
             }
             else{
                 awardWon = "No";
-                awards--;
+
             }
             stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
         } else if (position == "Defender") {
@@ -123,7 +123,7 @@ public class SoccerPlayerCareer {
             }
             else{
                 awardWon = "No";
-                awards--;
+
             }
             stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
 
