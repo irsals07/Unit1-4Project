@@ -1,6 +1,20 @@
 import java.util.Scanner;
 
+
+/**
+ * This ChooseTraits Class is a helper class which helps the object select the
+ * specific traits necessary for the player like the team and position
+ */
+
 public class ChooseTraits {
+
+
+    /**
+     * The printTeamOptions method gives the options to pick a team from a country
+     * which it sets and is called later with a series of inputs and print statements
+     *
+     * @return the team chosen by the user
+     */
 
     public static String printTeamOptions(){
         Scanner s = new Scanner(System.in);
@@ -61,6 +75,11 @@ public class ChooseTraits {
         return team;
 
     }
+    /**
+     * The choosePosition method gives the options to pick a position
+     *
+     * @return the position chosen
+     */
 
     public static String choosePosition(){
         Scanner s = new Scanner(System.in);

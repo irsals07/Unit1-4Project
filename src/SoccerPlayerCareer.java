@@ -2,6 +2,12 @@ import java.util.Scanner;
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
 
+/**
+ * The SoccerPlayerCareer class represents the player.
+ * The player has a name, age, nationality, position, and team
+ */
+
+
 public class SoccerPlayerCareer {
     Scanner s = new Scanner(System.in);
     NumberFormat formatter = new DecimalFormat("#0.00");
@@ -24,6 +30,23 @@ public class SoccerPlayerCareer {
 
     private String currentTeam;
 
+    /**
+     * Constructor for the SoccerPlayerCareer class. This createts a new instance
+     * of the player given the below parameters
+     *
+     * @param playerName represents the name
+     * @param age is the age of the player which starts at 16
+     * @param nationality is the player's nationality which the player
+     * @param position is the position of the player chosen with the ChooseTraits class
+     * @param currentTeam is the team which is also chosen by the ChooseTraits class
+     * @param totalAssists,
+     * @param totalGoals,
+     * @param totalCleanSheets,
+     * @param awards
+     * @param totalGames All the last 5 params start at 0 and are incremented as the players career go on and represent the stats of the player
+     *
+     */
+
     public SoccerPlayerCareer(String playerName, int age, String nationality, String position, String currentTeam, int totalGoals, int totalAssists, int totalGames, int totalCleanSheets, int awards) {
         this.playerName = playerName;
         this.age = age;
@@ -37,8 +60,14 @@ public class SoccerPlayerCareer {
         this.awards = awards;
     }
 
+    /**
+     The activeCareer method will return true while the player is younger than 36
+     and still playing. When the player is 36, the activeCareer will return false
+     and the player career will end
 
-    // Active career will allow the program to run as long as the playing boolean is true, otherwise it will return false
+     @return whether the player is playing or not with true or false
+     */
+
     public boolean activeCareer() {
         boolean playing = true;
         if (age == 36) {
@@ -47,30 +76,31 @@ public class SoccerPlayerCareer {
         return playing;
     }
 
-    //Simulate Year method uses the stats for season that randomly generate the games and stats for the player depending on their position and returns it
-    // It also increases the age
+
+    /**
+     *     simulateYear method uses the the statsForSeason method where when called,
+     *      it will generate the random stats for the player depending on their position
+     *      and also increase their age by 1
+     * @return a string of all the stats from the simuateYear plus the age increase
+
+     */
+
     public String simulateYear() {
         String stats = "";
 
         stats = statsForSeason();
         age++;
-        if (bestPlayer()) {
-            awards++;
-        }
         return stats + "\nAge: " + age;
     }
 
-
-    public boolean bestPlayer() {
-        int yourVotes = (int) (Math.random() * 60) + 1;
-        int opponentOneVotes = (int) (Math.random() * 60) + 1;
-        int opponentTwoVotes = (int) (Math.random() * 60) + 1;
-        if (yourVotes > opponentOneVotes && yourVotes > opponentTwoVotes) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    /**
+     * statsForSeason method generates random stats for the player depending on their position
+     * It also compares the stats with another set of random stats which is the opponent,
+     * if the player can get higher stats than the opponent, they win the best player award
+     * Goalkeepers cant win it because goalkeepers never win the award
+     *
+     * @return the variable stats; this includes all their stats like games, goals, assists or clean sheets depending on their position
+     */
 
 
     public String statsForSeason() {
@@ -89,7 +119,7 @@ public class SoccerPlayerCareer {
             }
             else{
                 awardWon = "No";
-                awards--;
+
             }
             stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
         } else if (position == "Midfielder") {
@@ -106,7 +136,7 @@ public class SoccerPlayerCareer {
             }
             else{
                 awardWon = "No";
-                awards--;
+
             }
             stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
         } else if (position == "Defender") {
@@ -123,7 +153,7 @@ public class SoccerPlayerCareer {
             }
             else{
                 awardWon = "No";
-                awards--;
+
             }
             stats = "Games: " + games + "\nGoals: " + goals + "\nassists: " + assists + "\nBest Player Award: " + awardWon;
 
@@ -137,6 +167,15 @@ public class SoccerPlayerCareer {
         return stats;
 
     }
+
+
+    /**
+     * toString method for the SoccerPlayerCareer class which returns the stats for the player depending on their positon
+     * after every season
+     *
+     * @return the stats for the season
+     */
+
 
     public String toString() {
         if (position == "Attacker" || position == "Midfielder" || position == "Defender") {
@@ -158,6 +197,14 @@ public class SoccerPlayerCareer {
         }
     }
 
+    /**
+     * event1 takes in the input of the player for the question
+     * if the question matches with the answer, they win
+     *
+     * @return text of whether they did good or not
+     */
+
+
     public String event1(String input1) {
         String reverse = "";
         String team = currentTeam.toLowerCase();
@@ -172,17 +219,5 @@ public class SoccerPlayerCareer {
         }
     }
 
-    public String event2(String input1) {
-        String reverse = "";
-        String nation = nationality.toLowerCase();
-        for (int i = 0; i < nation.length(); i++) {
-            String character = nation.substring(i, i + 1);
-            reverse = character + reverse;
-        }
-        if (input1.equals(reverse)) {
-            return "Good job, you did it now your team can keep playing with you";
-        } else {
-            return "Terrible Job! You put the entire team at risk";
-        }
-    }
+
 }
